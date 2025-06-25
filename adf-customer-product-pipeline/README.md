@@ -78,7 +78,7 @@ If using scheduled automation, attach a trigger to run daily or based on another
 You can explore full ADF pipeline definitions here:
 
 - 🔗 [Main Pipeline JSON](./Main_pipeline.json)
-- 🔗 [Child Pipeline JSON](./Child_Pipeline.json)
+- 🔗 [Child Pipeline JSON](./Child_pipeline.json)
 
 Make sure these files are committed to the repo at the same level as this README.
 

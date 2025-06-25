@@ -26,7 +26,6 @@ The pipeline saves the result as individual `.json` files in Azure Data Lake Sto
 
 ### 🧪 Pipeline in Azure Data Factory
 
-> Upload a screenshot and rename it as `pipeline_view.png`
 
 ![ADF Pipeline View](./Pipeline_view.png)
 
@@ -39,7 +38,6 @@ This pipeline is automatically triggered at:
 - **🕛 12:00 AM IST**
 - **🕛 12:00 PM IST**
 
-> Upload a screenshot and rename it as `trigger_config.png`
 
 ![ADF Trigger Screenshot](./trigger_config.png)
 

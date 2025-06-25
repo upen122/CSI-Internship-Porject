@@ -37,7 +37,7 @@ This solution contains two connected pipelines that handle conditional data tran
 
 ## 🧩 Visual Flow – Child Pipeline
 
-![Child Pipeline View](./ChildPipeline_view.png)
+![Child Pipeline View](./Child_pipeline.png)
 
 ---
 
@@ -78,7 +78,7 @@ If using scheduled automation, attach a trigger to run daily or based on another
 You can explore full ADF pipeline definitions here:
 
 - 🔗 [Main Pipeline JSON](./Main_pipeline.json)
-- 🔗 [Child Pipeline JSON](./ChildPipeline.json)
+- 🔗 [Child Pipeline JSON](./Child_Pipeline.json)
 
 Make sure these files are committed to the repo at the same level as this README.
 

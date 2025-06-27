@@ -6,7 +6,7 @@ This repository contains multiple Azure Data Factory (ADF) pipelines demonstrati
 
 ## 📁 Project Modules
 
-### 1️⃣ [🌍 Country Data Pipeline](./CountryPipeline/README.md)
+### 1️⃣ [🌍 Country Data Pipeline](./adf-country-pipeline/README.md)
 - Fetches data from a REST API for selected countries (India, US, UK, China, Russia).
 - Saves each country's data as individual `.json` files in Azure Data Lake Storage (ADLS).
 - Triggered automatically **twice daily** (12:00 AM & 12:00 PM IST).
@@ -15,7 +15,7 @@ This repository contains multiple Azure Data Factory (ADF) pipelines demonstrati
 
 ---
 
-### 2️⃣ [🔄 Conditional Copy Pipeline](./CustomerProductPipeline/README.md)
+### 2️⃣ [🔄 Conditional Copy Pipeline](./adf-customer-product-pipeline/README.md)
 - Copies customer data from Azure SQL Database to ADLS **if record count > 500**.
 - Triggers a **Child Pipeline** to copy product data **if count > 600**, passing a parameter.
 - Output filenames are dynamically generated based on record counts.

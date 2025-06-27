@@ -1,3 +1,4 @@
+
 # 🔄 Azure Data Factory – Customer & Product Conditional Copy Pipeline
 
 ## 📌 Task Overview
@@ -7,6 +8,7 @@ This solution contains two connected pipelines that handle conditional data tran
 1. ✅ Copy **Customer** data to ADLS **if record count > 500**  
 2. 🔁 If **Customer count > 600**, trigger a **Child Pipeline** to copy **Product** data  
 3. 📦 Data is stored in ADLS as **JSON** files  
+4. 🔗 **Customer count** is passed to the **child pipeline** as a parameter for dynamic processing  
 
 ---
 
@@ -15,16 +17,16 @@ This solution contains two connected pipelines that handle conditional data tran
 ### 🔹 Main Pipeline Logic
 
 - Performs a **Lookup** to get the customer record count.
-- Uses **IfCondition** to validate `count > 500`
+- Uses **IfCondition** to check `count > 500`
 - Executes **CopyCustomerData** if condition is met.
-- Triggers **ChildPipeline** if count exceeds 600, passing the count via **pipeline parameter**.
+- Triggers **ChildPipeline** if `count > 600`, passing the count via **pipeline parameter**.
 
 ### 🔹 Child Pipeline Logic
 
-- Accepts `customerCount` from parent pipeline.
-- Performs **Lookup** on product records.
-- If product count > 0, copies the data to ADLS.
-- Uses dynamic parameter to name the product file like:  
+- Accepts `customerCount` from the parent pipeline.
+- Performs **Lookup** on `Products` table.
+- If product count > 0, copies data to ADLS.
+- Uses dynamic naming for product output like:  
   `product_data_{customerCount}.json`
 
 ---
@@ -43,52 +45,85 @@ This solution contains two connected pipelines that handle conditional data tran
 
 ## 📂 Output Files in ADLS
 
-> The following files are dynamically created in ADLS Gen2:
+Files generated and stored in **ADLS Gen2**:
 
-- `customer_data.json`
-- `product_data_610.json` (example when customer count is 610)
+- ✅ `customer_data.json`
+- ✅ `product_data_610.json` (if customerCount = 610)
 
 ![Output Screenshot](./Output.png)
 
 ---
 
-## ⚙️ Trigger (Optional)
+## 🔁 Parameter Passing – Parent to Child
 
-If using scheduled automation, attach a trigger to run daily or based on another event.
+The `CopyCustomerDataPipeline` passes the value of `customerCount` to the `ChildPipeline`.
+
+### 🧬 Parent Pipeline Snippet
+
+```json
+{
+  "pipeline": {
+    "referenceName": "ChildPipeline",
+    "type": "PipelineReference"
+  },
+  "waitOnCompletion": true,
+  "parameters": {
+    "customerCount": "@activity('GetCustomerCount').output.firstRow.count"
+  }
+}
+```
+
+### 📥 Child Pipeline Parameters
+
+```json
+"parameters": {
+  "customerCount": {
+    "type": "string"
+  }
+}
+```
+
+📁 **Example Output File**  
+If `customerCount = 610`, then the output file will be:
+
+```
+product_data_610.json
+```
+
+🖼️ *Screenshot from parameter passing output UI goes here:*  
+**👉 Add your screenshot below this line**  
+![Parameter Passing Output](./Parameter_Passing.png)
 
 ---
 
-## 🧠 Technical Details
+## ✅ Project Task Completion
 
-| Component              | Value / Description                                |
-|------------------------|----------------------------------------------------|
-| **Main Pipeline**      | `CopyCustomerDataPipeline`                         |
-| **Child Pipeline**     | `ChildPipeline`                                    |
-| **Source DB**          | Azure SQL Database                                 |
-| **Sink**               | Azure Data Lake Storage (ADLS Gen2)                |
-| **Format**             | JSON                                               |
-| **Trigger Condition**  | `CustomerCount > 500` & `CustomerCount > 600`      |
-| **File Naming**        | Static for customer; Dynamic for product files     |
-| **Parameter Passing**  | `pipeline().parameters.customerCount`              |
+- [x] Task 1: Fetch country data from REST API  
+- [x] Task 2: Setup time-based trigger  
+- [x] Task 3: Conditional copy of customer & product data  
+- [x] Task 4: Parameter passing from parent to child pipeline  
 
 ---
 
-## 📄 JSON Pipeline Definitions
+## 🧠 Technical Summary
 
-You can explore full ADF pipeline definitions here:
-
-- 🔗 [Main Pipeline JSON](./Main_pipeline.json)
-- 🔗 [Child Pipeline JSON](./Child_pipeline.json)
-
-Make sure these files are committed to the repo at the same level as this README.
+| Component              | Description                                         |
+|------------------------|-----------------------------------------------------|
+| **Main Pipeline**      | `CopyCustomerDataPipeline`                          |
+| **Child Pipeline**     | `ChildPipeline`                                     |
+| **Source DB**          | Azure SQL Database                                  |
+| **Sink**               | Azure Data Lake Storage Gen2                        |
+| **Format**             | JSON                                                |
+| **Trigger Condition**  | Customer count > 500 and > 600                      |
+| **Dynamic Filename**   | `product_data_<customerCount>.json`                |
+| **Parameter Used**     | `pipeline().parameters.customerCount`              |
 
 ---
 
-## ✅ Status
+## 📄 Pipeline Definitions
 
-- ✔️ Successfully implemented conditional logic  
-- ✔️ Parent-child pipeline parameter passing validated  
-- ✔️ ADLS storage tested and file naming verified  
+- 🔗 [Main Pipeline JSON](./Main_pipeline.json)  
+- 🔗 [Child Pipeline JSON](./Child_pipeline.json)  
 
 ---
 
@@ -96,7 +131,4 @@ Make sure these files are committed to the repo at the same level as this README
 
 **Upen Singh**  
 📧 `upensingh799@gmail.com`  
-🎓 CSI Internship Project 2025
-
----
-
+🎓 CSI Internship Project 2025  

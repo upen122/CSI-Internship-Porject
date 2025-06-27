@@ -11,7 +11,7 @@ This repository contains multiple Azure Data Factory (ADF) pipelines demonstrati
 - Saves each country's data as individual `.json` files in Azure Data Lake Storage (ADLS).
 - Triggered automatically **twice daily** (12:00 AM & 12:00 PM IST).
 
-➡️ [View Detailed Documentation](./CountryPipeline/README.md)
+➡️ [View Detailed Documentation](./adf-country-pipeline/README.md)
 
 ---
 
@@ -20,7 +20,7 @@ This repository contains multiple Azure Data Factory (ADF) pipelines demonstrati
 - Triggers a **Child Pipeline** to copy product data **if count > 600**, passing a parameter.
 - Output filenames are dynamically generated based on record counts.
 
-➡️ [View Detailed Documentation](./CustomerProductPipeline/README.md)
+➡️ [View Detailed Documentation](./adf-customer-product-pipeline/README.md)
 
 ---
 

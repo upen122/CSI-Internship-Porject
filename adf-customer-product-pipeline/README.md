@@ -86,11 +86,13 @@ The `CopyCustomerDataPipeline` passes the value of `customerCount` to the `Child
 📁 **Example Output File**  
 If `customerCount = 610`, then the output file will be:
 
+![Output Screenshot](./Output.png)
+
 ```
 product_data_610.json
 ```
 
-🖼️ ## Parameter Passing   
+## 🖼️ Parameter Passing   
 ![Parameter Passing Output](./Parameter_Passing.png)
 
 ---

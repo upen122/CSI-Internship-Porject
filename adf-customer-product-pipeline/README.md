@@ -90,8 +90,7 @@ If `customerCount = 610`, then the output file will be:
 product_data_610.json
 ```
 
-🖼️ *Screenshot from parameter passing output UI goes here:*  
-**👉 Add your screenshot below this line**  
+🖼️ ## Parameter Passing   
 ![Parameter Passing Output](./Parameter_Passing.png)
 
 ---

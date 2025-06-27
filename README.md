@@ -54,3 +54,18 @@ This repository contains multiple Azure Data Factory (ADF) pipelines demonstrati
 
 ## 📌 Folder Structure
 
+Azure-ADF-Project/
+│
+├── CountryPipeline/
+│ ├── pipeline_export.json
+│ ├── trigger_config.png
+│ ├── output_screenshot.png
+│ └── README.md
+│
+├── CustomerProductPipeline/
+│ ├── CopyCustomerDataPipeline.json
+│ ├── ChildPipeline.json
+│ ├── Output.png
+│ └── README.md
+│
+└── README.md <-- You are here

@@ -53,7 +53,7 @@ This repository contains multiple Azure Data Factory (ADF) pipelines demonstrati
 ---
 
 ## 📌 Folder Structure
----
+```
 Azure-ADF-Project/
 │
 ├── CountryPipeline/
@@ -69,3 +69,5 @@ Azure-ADF-Project/
 │ └── README.md
 │
 └── README.md <-- You are here
+
+```
